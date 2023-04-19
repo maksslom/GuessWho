@@ -53,6 +53,9 @@ def room():
     room = session.get("room")
     if room is None or session.get("name") is None or room not in rooms:
         return redirect(url_for("home"))
+    
+    if rooms[room]["members"] >=2:
+        return render_template("home.html", error="Room is full.")
 
     return render_template("room.html", code=room,messages=rooms[room]["messages"])
 

@@ -1,20 +1,32 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {%block stylelink%}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/HomeStyle.css') }}"
+/>
+{%endblock%} {% block content %}
+<img
+  class="logo"
+  src="{{ url_for('static', filename='images/logo.png')}}"
+  width="400"
+  height="197"
+/>
 <form method="post" class="buttons">
-  <h3>Enter The Chat Room</h3>
-  <div>
-    <label>Name:</label>
+  <div calss="container">
+    <label for="username"><strong>Username</strong></label>
     <input
       type="text"
-      placeholder="Pick a name!"
+      placeholder="Enter your username"
       name="name"
       value="{{name}}"
+      required
     />
-  </div>
-  <div class="join">
+    <label for="roomcode"><strong>Roomcode</strong> </label>
     <input type="text" placeholder="Room Code" name="code" value="{{code}}" />
-    <button type="submit" name="join">Join a Room</button>
+    <button type="submit" name="join" class="join-btn">Join a Room</button>
+    <button type="submit" name="create" class="create-btn">
+      Create a Room
+    </button>
   </div>
-  <button type="submit" name="create" class="create-btn">Create a Room</button>
   {% if error %}
   <ul>
     <li>{{error}}</li>

@@ -1,20 +1,377 @@
-{% extends 'base.html' %} {% block content %}
-<div class="message-box">
-  <h2>Chat Room: {{code}}</h2>
-  <div class="messages" id="messages"></div>
-  <div class="inputs">
-    <input
-      type="text"
-      rows="3"
-      placeholder="Message"
-      name="message"
-      id="message"
-    />
-    <button type="button" name="send" id="send-btn" onClick="sendMessage()">
-      Send
-    </button>
+{% extends 'base.html' %} {%block stylelink%}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/RoomStyle.css') }}"
+/>
+{%endblock%} {% block content %}
+<div class="gameplay">
+  <div class="message-box">
+    <h2>Chat Room: {{code}}</h2>
+    <div class="messages" id="messages"></div>
+    <div class="inputs">
+      <input
+        type="text"
+        rows="3"
+        placeholder="Message"
+        name="message"
+        id="message"
+      />
+      <button type="button" name="send" id="send-btn" onClick="sendMessage()">
+        Send
+      </button>
+    </div>
+  </div>
+  <div class="board">
+    <ul>
+      <label><b>Inga</b></label>
+      <li>
+        <img
+          id="Inga"
+          src="https://previews.123rf.com/images/sashazerg/sashazerg1601/sashazerg160100014/51670005-chinese-man-isolated-illustration.jpg"
+          onclick="changeInga()"
+        />
+      </li>
+      <label><b>Maks</b></label>
+      <li>
+        <img
+          id="Piast"
+          src="https://images.obi.pl/product/PL/412x329/658794_1.jpg"
+          onclick="Piast()"
+        />
+      </li>
+      <label><b>Bartek</b></label>
+      <li>
+        <img
+          id="Bartek"
+          src="https://zawodowcy.org/wp-content/uploads/2016/11/Informatyk-Leszno8.jpg"
+          onclick="Bartek()"
+        />
+      </li>
+      <label><b>Jeremi</b></label>
+      <li>
+        <img
+          id="Jeremi"
+          src="https://ccms.wip.pl/uploads/files/photos/c3576ffbe160c8fe23e985934281a9ee8d42a97b_1.png"
+          onclick="Jeremi()"
+        />
+      </li>
+    </ul>
+    <ul>
+      <label><b>Kuba</b></label>
+      <li>
+        <img
+          id="Kuba"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm2Mclw2-MVyJsgaSp2xFbvqgOnJNEUDX8Hg&usqp=CAU"
+          onclick="changeKuba()"
+        />
+      </li>
+      <label><b>Maks</b></label>
+      <li>
+        <img
+          id="MaksS"
+          src="https://medyczny-online.pl/403-home_default/kula-lokciowa-niebieska.jpg"
+          onclick="Słom()"
+        />
+      </li>
+      <label><b>Franek</b></label>
+      <li>
+        <img
+          id="Franek"
+          src="https://s2.tvp.pl/images2/b/8/3/uid_b83560d20ed58454afdd94e4c0c0f70e1433841728226_width_1280_play_0_pos_0_gs_0_height_720_pani-anna-kapela-liczyla-na-to-ze-corki-wroca-do-domu-fottvp-wroclaw.jpg"
+          onclick="Franek()"
+        />
+      </li>
+      <label><b>David</b></label>
+      <li>
+        <img
+          id="David"
+          src="https://zsl.gliwice.pl/wp-content/uploads/2020/05/informatyk-zsl-850x560.jpg"
+          onclick="David()"
+        />
+      </li>
+    </ul>
+    <ul>
+      <label><b>Marcin</b></label>
+      <li>
+        <img
+          id="Marcin"
+          src="https://pliki.wnp.pl/d/42/93/32/429332_r2_940.jpg"
+          onclick="Marcin()"
+        />
+      </li>
+      <label><b>Ken</b></label>
+      <li>
+        <img
+          id="Ken"
+          src="https://previews.123rf.com/images/sashazerg/sashazerg1601/sashazerg160100014/51670005-chinese-man-isolated-illustration.jpg"
+          onclick="Ken()"
+        />
+      </li>
+      <label><b>Maks</b></label>
+      <li>
+        <img
+          id="Sosnowski"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb2qa0DRz55yAjxnChR349TwSZ-N9130m9kA&usqp=CAU"
+          onclick="Sosnowski()"
+        />
+      </li>
+      <label><b>Filip</b></label>
+      <li>
+        <img
+          id="Filip"
+          src="https://www.joomla.pl/media/k2/items/cache/957f68251a4c401eb034febbf0fc418f_XL.jpg"
+          onclick="Filip()"
+        />
+      </li>
+    </ul>
+    <ul>
+      <label><b>Maciek</b></label>
+      <li>
+        <img
+          id="Maciek"
+          src="https://www.denley.pl/data/include/cms/poradniki/Jak_wprowadzi_czerwie_do_stylizacji_1.jpg"
+          onclick="Maciek()"
+        />
+      </li>
+      <label><b>Jankos</b></label>
+      <li>
+        <img
+          id="Jankos"
+          src="https://www.flushinghospital.org/newsletter/wp-content/uploads/2019/03/GettyImages-530468873.jpg"
+          onclick="Jankos()"
+        />
+      </li>
+      <label><b>Antek</b></label>
+      <li>
+        <img
+          id="Antek"
+          src="https://ssb.wiki.gallery/images/thumb/1/14/Wario_SSBB.jpg/238px-Wario_SSBB.jpg"
+          onclick="Antek()"
+        />
+      </li>
+      <label><b>Olivier</b></label>
+      <li>
+        <img
+          id="Olivier"
+          src="https://ocdn.eu/pulscms-transforms/1/PRLk9kpTURBXy9kYjk0MDY4ZDdmYzYyNGU4ZTY1ZWIxYzFjYzZkNTQyMS5qcGeSlQMAH80D6M0CMpMFzQSwzQKF3gABoTAB"
+          onclick="Olivier()"
+        />
+      </li>
+    </ul>
+    <ul>
+      <label><b>Janek</b></label>
+      <li>
+        <img
+          id="Janek"
+          src="https://a.allegroimg.com/original/115d8b/e9058f0f40108afd28770eda26c7/Muslady-Mosiezna-trabka-Bb-z-ustnikiem-tunerem"
+          onclick="Janek()"
+        />
+      </li>
+      <label><b>Aleksander</b></label>
+      <li>
+        <img
+          id="Aleks"
+          src="https://muno.pl/wp-content/uploads/2021/02/narkotyki-850x570.jpg"
+          onclick="Aleks()"
+        />
+      </li>
+      <label><b>Krzysiek</b></label>
+      <li>
+        <img
+          id="Krzysiek"
+          src="https://technikum.pl/wp-content/uploads/2017/11/FBN_6904.jpg"
+          onclick="Krzysiek()"
+        />
+      </li>
+    </ul>
   </div>
 </div>
+<a class="exit" href="/">Leave</a>
+
+<script>
+  function changeInga() {
+    let Inga = document.getElementById("Inga");
+    if (
+      (Inga.src =
+        "https://previews.123rf.com/images/sashazerg/sashazerg1601/sashazerg160100014/51670005-chinese-man-isolated-illustration.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function changeKuba() {
+    let Inga = document.getElementById("Kuba");
+    if (
+      (Inga.src =
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm2Mclw2-MVyJsgaSp2xFbvqgOnJNEUDX8Hg&usqp=CAU")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Marcin() {
+    let Inga = document.getElementById("Marcin");
+    if ((Inga.src = "https://pliki.wnp.pl/d/42/93/32/429332_r2_940.jpg")) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Maciek() {
+    let Inga = document.getElementById("Maciek");
+    if (
+      (Inga.src =
+        "https://www.denley.pl/data/include/cms/poradniki/Jak_wprowadzi_czerwie_do_stylizacji_1.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Janek() {
+    let Inga = document.getElementById("Janek");
+    if (
+      (Inga.src =
+        "https://a.allegroimg.com/original/115d8b/e9058f0f40108afd28770eda26c7/Muslady-Mosiezna-trabka-Bb-z-ustnikiem-tunerem")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Piast() {
+    let Inga = document.getElementById("Piast");
+    if ((Inga.src = "https://images.obi.pl/product/PL/412x329/658794_1.jpg")) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Słom() {
+    let Inga = document.getElementById("MaksS");
+    if (
+      (Inga.src =
+        "https://medyczny-online.pl/403-home_default/kula-lokciowa-niebieska.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Ken() {
+    let Inga = document.getElementById("Ken");
+    if (
+      (Inga.src =
+        "https://previews.123rf.com/images/sashazerg/sashazerg1601/sashazerg160100014/51670005-chinese-man-isolated-illustration.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Jankos() {
+    let Inga = document.getElementById("Jankos");
+    if (
+      (Inga.src =
+        "https://www.flushinghospital.org/newsletter/wp-content/uploads/2019/03/GettyImages-530468873.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Aleks() {
+    let Inga = document.getElementById("Aleks");
+    if (
+      (Inga.src =
+        "https://muno.pl/wp-content/uploads/2021/02/narkotyki-850x570.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Bartek() {
+    let Inga = document.getElementById("Bartek");
+    if (
+      (Inga.src =
+        "https://zawodowcy.org/wp-content/uploads/2016/11/Informatyk-Leszno8.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Franek() {
+    let Inga = document.getElementById("Franek");
+    if (
+      (Inga.src =
+        "https://s2.tvp.pl/images2/b/8/3/uid_b83560d20ed58454afdd94e4c0c0f70e1433841728226_width_1280_play_0_pos_0_gs_0_height_720_pani-anna-kapela-liczyla-na-to-ze-corki-wroca-do-domu-fottvp-wroclaw.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Sosnowski() {
+    let Inga = document.getElementById("Sosnowski");
+    if (
+      (Inga.src =
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb2qa0DRz55yAjxnChR349TwSZ-N9130m9kA&usqp=CAU")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Antek() {
+    let Inga = document.getElementById("Antek");
+    if (
+      (Inga.src =
+        "https://ssb.wiki.gallery/images/thumb/1/14/Wario_SSBB.jpg/238px-Wario_SSBB.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Krzysiek() {
+    let Inga = document.getElementById("Krzysiek");
+    if (
+      (Inga.src =
+        "https://technikum.pl/wp-content/uploads/2017/11/FBN_6904.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Jeremi() {
+    let Inga = document.getElementById("Jeremi");
+    if (
+      (Inga.src =
+        "https://technikum.pl/wp-content/uploads/2017/11/FBN_6904.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+  function David() {
+    let Inga = document.getElementById("David");
+    if (
+      (Inga.src =
+        "https://zsl.gliwice.pl/wp-content/uploads/2020/05/informatyk-zsl-850x560.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Filip() {
+    let Inga = document.getElementById("Filip");
+    if (
+      (Inga.src =
+        "https://www.joomla.pl/media/k2/items/cache/957f68251a4c401eb034febbf0fc418f_XL.jpg")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+
+  function Olivier() {
+    let Inga = document.getElementById("Olivier");
+    if (
+      (Inga.src =
+        "https://ocdn.eu/pulscms-transforms/1/PRLk9kpTURBXy9kYjk0MDY4ZDdmYzYyNGU4ZTY1ZWIxYzFjYzZkNTQyMS5qcGeSlQMAH80D6M0CMpMFzQSwzQKF3gABoTAB")
+    ) {
+      Inga.src = "{{ url_for('static', filename='images/crossed.png')}}";
+    }
+  }
+</script>
 <script type="text/javascript">
   var socketio = io();
 

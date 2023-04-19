@@ -1,0 +1,65 @@
+body {
+  background-image: linear-gradient(to right, #e1d634, #faa82e);
+  font-family: Helvetica;
+}
+
+h1 {
+  color: black;
+  text-align: center;
+}
+
+.container {
+  padding: 16px;
+}
+
+#zaloguj {
+  width: 20%;
+  margin: 5% 40%;
+}
+
+.create-btn,
+.join-btn {
+  width: 150px;
+  margin: 20px 10%;
+  display: inline-block;
+  border: 0px solid white;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background-color: #9e7908;
+  box-shadow: -2px -2px 5px #f6c995cc, 4px 4px 3px rgba(64, 70, 80, 0.342);
+}
+
+.create-btn:hover,
+.join-btn:hover {
+  background-color: #7a5d07;
+}
+
+form {
+  background-color: transparent;
+  margin: 5% 35% auto;
+  border-radius: 25px;
+  padding: 10px 10px;
+  border: #ccc;
+  box-shadow: -1px -1px 7px #fffdfdcc, 5px 5px 5px rgba(94, 104, 121, 0.342);
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+label {
+  color: black;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 100px;
+}
